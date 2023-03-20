@@ -19,7 +19,8 @@ LOCAL_APPS = [
     'workgenius.core.apps.CoreConfig',
     'workgenius.common.apps.CommonConfig','workgenius.users.apps.UsersConfig',
     'workgenius.authentication.apps.AuthenticationConfig',
-
+    'workgenius.mandrill.apps.MandrillConfig',
+    'workgenius.socketapp.apps.SocketappConfig',
 ]
 
 THIRD_PARTY_APPS = [
@@ -113,7 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-]AUTH_USER_MODEL = 'users.BaseUser'
+]
+AUTH_USER_MODEL = 'users.BaseUser'
 
 
 # Internationalization
