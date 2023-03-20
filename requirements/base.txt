@@ -27,3 +27,6 @@ Faker==15.1.1
 factory-boy==3.2.1
 pytest==7.2.0
 pytest-django==4.5.2
+
+channels==4.0.0
+daphne==4.0.0
