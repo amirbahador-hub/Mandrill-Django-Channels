@@ -1,5 +1,5 @@
 from django.urls import path, include
 
 urlpatterns = [
-    # path('blog/', include(('embed.blog.urls', 'blog')))
+    path('mandrill/', include(('workgenius.mandrill.urls', 'mandrill')))
 ]
