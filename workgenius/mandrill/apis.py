@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework import status, serializers
 from drf_spectacular.utils import extend_schema
 from .services import store_message_payload
+from .selectors import get_events
 
 
 class MessageSerializer(serializers.Serializer):
@@ -40,3 +41,17 @@ class WebhookApi(APIView):
                     )
         return Response(status=status.HTTP_204_NO_CONTENT)
         #return Response(self.OutPutRegisterSerializer(user, context={"request":request}).data)
+
+class EventList(APIView):
+    class OutPutSerializer(serializers.Serializer):
+        events = serializers.SerializerMethodField("get_events")
+
+        def get_events(self, obj):
+            return obj
+
+    def get(self, request):
+        events = get_events()
+
+        return Response(self.OutPutSerializer(events, context={"request":request}).data)
+
+        
