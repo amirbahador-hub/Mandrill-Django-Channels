@@ -100,6 +100,15 @@ if os.environ.get('GITHUB_WORKFLOW'):
     }
 
 
+#CHANNEL_LAYER = {
+#    'default':{
+#        "BACKEND": "channels_redis.core.RedisChannelLayer",
+#        "CONFIG":{
+#            "hosts": [('127.0.0.1', 6379)]
+#        }
+#    }
+#}
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -117,8 +126,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-AUTH_USER_MODEL = 'users.BaseUser'
 
+AUTH_USER_MODEL = 'users.BaseUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -157,6 +166,11 @@ CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': env("REDIS_LOCATION", default="redis://localhost:6379"),
+    }
+}
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
 # Cache time to live is 15 minutes.
