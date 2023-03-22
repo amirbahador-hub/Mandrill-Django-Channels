@@ -99,16 +99,6 @@ if os.environ.get('GITHUB_WORKFLOW'):
         }
     }
 
-
-#CHANNEL_LAYER = {
-#    'default':{
-#        "BACKEND": "channels_redis.core.RedisChannelLayer",
-#        "CONFIG":{
-#            "hosts": [('127.0.0.1', 6379)]
-#        }
-#    }
-#}
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -153,7 +143,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'EXCEPTION_HANDLER': 'workgenius.api.exception_handlers.drf_default_with_modifications_exception_handler',
-    # 'EXCEPTION_HANDLER': 'embed.api.exception_handlers.hacksoft_proposed_exception_handler',
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
@@ -168,9 +157,11 @@ CACHES = {
         'LOCATION': env("REDIS_LOCATION", default="redis://localhost:6379"),
     }
 }
+
 CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    'default':{
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        'LOCATION': env("REDIS_LOCATION", default="redis://localhost:6379"),
     }
 }
 # Cache time to live is 15 minutes.
@@ -181,12 +172,4 @@ APP_DOMAIN = env("APP_DOMAIN", default="http://localhost:8000")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-from config.settings.cors import *  # noqa
-from config.settings.jwt import *  # noqa
-from config.settings.sessions import *  # noqa
-from config.settings.celery import *  # noqa
 from config.settings.swagger import *  # noqa
-#from config.settings.sentry import *  # noqa
-
-#from config.settings.files_and_storages import *  # noqa
-#from config.settings.email_sending import *  # noqa
