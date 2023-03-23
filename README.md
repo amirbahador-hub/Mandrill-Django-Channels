@@ -64,11 +64,11 @@
     ```
 
 ## Endpoints
-- `/` : index.html websocket client that will be notified when ever you have an event
-- `/doc`: here you can access to swaggger ui and view and test all REST API endpoints
-- `/api/hook/` : This is the end point that you sould setup as a webhook client in mandrill app.
-- `/api/events/` : a test endpoint to get redis keys
-- `/ws/email/` : websocket server for mandrill events
+- `/` : index.html websocket client that will be notified when ever you have an event.
+- `/doc`: here you can access to swagger ui and view and test all REST API endpoints.
+- `/api/hook/` : endpoint that you sould setup as a webhook client in mandrill app.
+- `/api/events/` : a test endpoint to get redis keys.
+- `/ws/email/` : websocket server for mandrill events.
 ## Architecture
 - Django, By default, is based on Model-View-Template (MVT) architecture.
 - I improved DRF basic architecture with my [cookiecutter](https://github.com/amirbahador-hub/django_style_guide).
@@ -76,17 +76,22 @@
 
 ### Layers
 - `Api`: Api is just an interface for calling other methods in a clean way.
-- `Serializers`: Provides parsing capabilities for our input and output json responses and that's it we are not going to put any bussiness logic in here what so ever.
-- `Services`: This is were our business logic lives, when ever we want to have a create or update or delete from the database we will put in in services.
-- `Selectors`: Just like the name suggest when ever we want to select  something from the database we use selectors and just like services we  can put out business logic in here.
-- `Utils`: any thing which doesn't need any database call when ever we  have some abstractions that can be used in `services` or `selectors` we will  use utils layer.
-- `Views`: Just like the Api layer it's just an interface but it used for template rendering.
+- `Serializers`: Provides parsing capabilities for our input and output json responses and that's it .  
+We are not going to put any bussiness logic in here what so ever.
+- `Services`: This is were our business logic lives, for Create, Update, Delete Oprations.
+- `Selectors`: Just like the name suggest when ever we want to select something from the database we use selectors.
+- `Utils`: any thing which doesn't need any database call, when ever we have some abstractions that can be used in `services` or `selectors` we will use utils layer.
+- `Views`: Just like the Api layer it's just an interface, but it used for template rendering.
 - `Consumers`: it's an interface for out websocket calls.
 - `routing`: websocket router
 - `urls`: api and template routers
 
 ### Patterns
-Technically, when you are using frameworks you have little abstraactoins or desgin patterns beacuse most of the desgins are actually  in the library itself, But Beacuse Usaully when you have events you can use Observer Desgin pattern i used it to showoff my skills but in a real project with this scale this is an unnecessary abstraction:
+Technically, when you are using frameworks you have little abstraction or desgin patterns,
+beacuse most of the desgins are actually  in the library itself.  
+
+But Beacuse Usaully when you have events you can use,   `Observer DesginPattern`.  
+ I used it to showoff my skills but in a real project with this scale this is an unnecessary abstraction:
 
 ![Observer Pattern](carbon.png)
 
@@ -101,6 +106,10 @@ Technically, when you are using frameworks you have little abstraactoins or desg
 
 
 ## Future Improvements
--  Even though we tried to isolate out bussins logic it's still depends on the redis, we can add another layer called mapper which will mappes python classes with any database.
-- Better test covrage. we can add integration test using selenium for our templates and we we also must add more tests for our socket calls. 
-- if we have lot's of socket calls then i would suggest to use a microservice artitucure and use Golang or Erlang for better socket handeling.
+-  Even though we tried to isolate our bussins logic it's still depends on the redis, we can add another layer called mapper,   
+which will mappes python classes with any database.
+- Better test covrage.  
+We can add integration test using `selenium` for our templates.  
+And we  also must add more tests for our socket calls. 
+- If we have lot's of socket calls then,   
+ I would suggest to use a microservice architecture and use `Golang` or `Erlang` for better socket handeling.
