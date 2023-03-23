@@ -14,12 +14,12 @@
 </p>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a>
+  <a href="#project-setup">Project Setup</a> •
+  <a href="#architecture">Architecture</a> •
+  <a href="#layers">Layers</a> •
+  <a href="#patterns">Patterns</a> •
+  <a href="#libraries">Libraries</a> •
+  <a href="#future-improvements">Future Improvements</a>
 </p>
 
 ![screenshot](readme.gif)
@@ -96,6 +96,6 @@ Technically, when you are using frameworks you have little abstraactoins or desg
 
 
 ## Future Improvements
-- Eventho that we tried to isolate out bussins logic it's still depends on the redis, we can add another layer called mapper which will mappes python classes with any database.
+-  Even though we tried to isolate out bussins logic it's still depends on the redis, we can add another layer called mapper which will mappes python classes with any database.
 - Better test covrage. we can add integration test using selenium for our templates and we we also must add more tests for our socket calls. 
 - if we have lot's of socket calls then i would suggest to use a microservice artitucure and use Golang or Erlang for better socket handeling.
