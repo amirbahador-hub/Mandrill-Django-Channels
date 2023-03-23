@@ -13,15 +13,6 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data/
 
-  rabbitmq:
-    image: "rabbitmq:alpine"
-
-    healthcheck:
-      test: rabbitmq-diagnostics -q ping
-      interval: 30s
-      timeout: 30s
-      retries: 3
-
   redis:
     image: redis:7
     ports:

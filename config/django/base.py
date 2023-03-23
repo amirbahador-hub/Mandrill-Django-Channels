@@ -17,8 +17,7 @@ ALLOWED_HOSTS = ['*']
 
 LOCAL_APPS = [
     'workgenius.core.apps.CoreConfig',
-    'workgenius.common.apps.CommonConfig','workgenius.users.apps.UsersConfig',
-    'workgenius.authentication.apps.AuthenticationConfig',
+    'workgenius.common.apps.CommonConfig',
     'workgenius.mandrill.apps.MandrillConfig',
     'workgenius.socketapp.apps.SocketappConfig',
 ]
@@ -117,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'users.BaseUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
