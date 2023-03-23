@@ -1,41 +1,67 @@
-# WorkGenius
 
-## project setup
+<h1 align="center">
+  <br>
+  <a href="https://www.workgenius.com/de/"><img src="readme.png" alt="WorkGenius" width="200"></a>
+</h1>
 
-1- compelete cookiecutter workflow (recommendation: leave project_slug empty) and go inside the project
-```
-cd Project_name
-```
+<h4 align="center">A minimal WebSocket Application that can handel <a href="https://mandrillapp.com/" target="_blank">Mandrill</a> Events.</h4>
 
-2- SetUp venv
-```
-virtualenv venv
-source venv/bin/activate
-```
+<p align="center">
+  <a href="https://github.com/amirbahador-hub/WorkGenius/actions/workflows/tests.yml/badge.svg">
+    <img src="https://github.com/amirbahador-hub/WorkGenius/actions/workflows/tests.yml/badge.svg"
+         alt="TestBadge">
+  </a>
+</p>
 
-3- install Dependencies
-```
-pip install -r requirements.txt
-```
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#related">Related</a> •
+  <a href="#license">License</a>
+</p>
 
-4- spin off docker compose
-```
-docker-compose -f docker-compose.dev.yml up -d
-```
-
-5- create your env
-```
-cp .env.example .env
-```
-
-6- Create tables
-```
-python manage.py migrate
-```
-
-7- run the project
-```
-python manage.py runserver
-```
+![screenshot](readme.gif)
+## Project Setup
 
 
+1. SetUp venv
+
+    ```bash
+    virtualenv venv
+    source venv/bin/activate
+    ```
+
+2. install Dependencies
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. spin off docker compose
+    ```bash
+    docker-compose -f docker-compose.dev.yml up -d
+    ```
+
+4. create your env
+    ```bash
+    cp .env.example .env
+    ```
+
+5. Create tables
+    ```bash
+    python manage.py migrate
+    ```
+
+
+6. run the project
+    ```bash
+    python manage.py runserver
+    ```
+
+7. for running the tests
+    ```
+    pytest . -rP
+    ```
+
+## Structure
