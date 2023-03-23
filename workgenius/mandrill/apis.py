@@ -1,27 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status, serializers
+from .serializers import EventSerializer 
 from drf_spectacular.utils import extend_schema
 from .services import store_message_payload
 from .selectors import get_events
 
 
-class MessageSerializer(serializers.Serializer):
-        ts = serializers.IntegerField()
-        email = serializers.EmailField()
-        sender = serializers.EmailField()
-        subject = serializers.CharField()
-        state = serializers.CharField()
-        _id = serializers.CharField()
-        _version = serializers.CharField()
-
-class EventSerializer(serializers.Serializer):
-        msg = MessageSerializer()
-        event = serializers.CharField()
-        _id = serializers.CharField()
-
 class WebhookApi(APIView):
-
     class InputSerializer(serializers.Serializer):
         mandrill_events = EventSerializer(many=True)
 
@@ -40,15 +26,17 @@ class WebhookApi(APIView):
                     status=status.HTTP_400_BAD_REQUEST
                     )
         return Response(status=status.HTTP_204_NO_CONTENT)
-        #return Response(self.OutPutRegisterSerializer(user, context={"request":request}).data)
+
 
 class EventList(APIView):
     class OutPutSerializer(serializers.Serializer):
+        # TODO: Show event msg 
         events = serializers.SerializerMethodField("get_events")
 
         def get_events(self, obj):
             return obj
 
+    @extend_schema(responses=OutPutSerializer)
     def get(self, request):
         events = get_events()
 

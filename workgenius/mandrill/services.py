@@ -1,4 +1,3 @@
-from async_timeout import timeout
 from django.core.cache import cache
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
@@ -7,21 +6,21 @@ from .utils import EmailEvent, Event
 
 channel_layer = get_channel_layer()
 
-def notify_event(event:dict):
+def notify_event(event:dict) -> None:
     """
     call sockets
     """
     async_to_sync(channel_layer.group_send)('email', {'type': 'add_event', 'event': event})
 
 
-def store_event(event:dict):
+def store_event(event:dict) -> None:
     """
         Store Events in Redis
     """
     cache.set(event["_id"],event["msg"], timeout=None)
 
 
-def store_message_payload(events:list):
+def store_message_payload(events:list) -> None:
     for data in events:
         event = EmailEvent(data)
         event.actions = Event()

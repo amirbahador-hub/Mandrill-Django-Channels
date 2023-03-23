@@ -11,6 +11,6 @@ class EmailEvent:
     data: dict
     actions = Event() # observer pattern
 
-    def broadcast(self):
+    def broadcast(self) -> None:
         self.actions(self.data)
 
