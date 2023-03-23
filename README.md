@@ -15,9 +15,8 @@
 
 <p align="center">
   <a href="#project-setup">Project Setup</a> •
+  <a href="#endpoints">EndPoints</a> •
   <a href="#architecture">Architecture</a> •
-  <a href="#layers">Layers</a> •
-  <a href="#patterns">Patterns</a> •
   <a href="#libraries">Libraries</a> •
   <a href="#future-improvements">Future Improvements</a>
 </p>
@@ -64,6 +63,12 @@
     pytest . -rP
     ```
 
+## Endpoints
+- `/` : index.html websocket client that will be notified when ever you have an event
+- `/doc`: here you can access to swaggger ui and view and test all REST API endpoints
+- `/api/hook/` : This is the end point that you sould setup as a webhook client in mandrill app.
+- `/api/event/` : a test endpoint to get redis keys
+- `/ws/email/` : websocket server for mandrill events
 ## Architecture
 - Django, By default, is based on Model-View-Template (MVT) architecture.
 - I improved DRF basic architecture with my [cookiecutter](https://github.com/amirbahador-hub/django_style_guide).
