@@ -67,7 +67,7 @@
 - `/` : index.html websocket client that will be notified when ever you have an event
 - `/doc`: here you can access to swaggger ui and view and test all REST API endpoints
 - `/api/hook/` : This is the end point that you sould setup as a webhook client in mandrill app.
-- `/api/event/` : a test endpoint to get redis keys
+- `/api/events/` : a test endpoint to get redis keys
 - `/ws/email/` : websocket server for mandrill events
 ## Architecture
 - Django, By default, is based on Model-View-Template (MVT) architecture.
