@@ -16,6 +16,46 @@
         h1 {
             color: #009879;
         }
+        .toast {
+            position: fixed;
+            margin: 10px;
+            top: 0;
+            right: 50px;
+            width: 250px;
+            padding: 6px;
+            background: #009878;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #aaaaaa;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s top 0.2s visibility 0.2s;
+        }    
+        .toast--visible {
+            top: 20px;
+            opacity: 1;
+            visibility: visible;
+        }
+        .toast--visible::before{
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: calc(100% * var(--progress, 0));
+            background-color: white;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .toast::after {
+            content: "\00D7";
+            position: absolute;
+            top: 2px;
+            right: 5px;
+        }
         .content-table{
             border-collapse: collapse;
             margin: 25px 0;
@@ -70,6 +110,31 @@
           </table>
       </div>
       <script>
+          const Toast = {
+              init() {
+                  this.hideTimeout = null;
+                  this.el = document.createElement('div');
+                  this.el.className = 'toast';
+                  document.body.appendChild(this.el)
+              },
+              show(message) {
+                    clearTimeout(this.hideTimeout);
+                    this.el.textContent = message;
+                    this.el.className = 'toast toast--visible';
+                    this.visibleSince = new Date();
+                    setInterval(() => {
+                        const timeVisible = new Date() - this.visibleSince;
+                        this.el.style.setProperty(
+                            "--progress",
+                            timeVisible / 3000
+                        )
+                    })
+                    this.hideTimeout = setTimeout(() => {
+                        this.el.classList.remove('toast--visible');
+                    }, 3000);
+              }
+          };
+          Toast.init()
           const eventSocket = new WebSocket(
               "ws://" +
               window.location.host +
@@ -98,6 +163,7 @@
 
               const root = document.querySelector('#events');
               root.appendChild(newTr)
+              Toast.show(`${data.event} Event added`)
 
           }
           eventSocket.onclose = function(e) {
