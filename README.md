@@ -2,13 +2,16 @@
 <h1 align="center">
   <br>
   <a href="https://mandrillapp.com/"><img src="readme.svg" alt="MANDRILL" width="200"></a>
+  <br>
+  Mandrill
+  <br>
 </h1>
 
 <h4 align="center">A minimal WebSocket Application that can handel <a href="https://mandrillapp.com/" target="_blank">Mandrill</a> Events.</h4>
 
 <p align="center">
-  <a href="https://github.com/amirbahador-hub/WorkGenius/actions/workflows/tests.yml/badge.svg">
-    <img src="https://github.com/amirbahador-hub/WorkGenius/actions/workflows/tests.yml/badge.svg"
+  <a href="https://github.com/amirbahador-hub/Mandrill-Django-Channels/actions/workflows/tests.yml/badge.svg">
+    <img src="https://github.com/amirbahador-hub/Mandrill-Django-Channels/actions/workflows/tests.yml/badge.svg"
          alt="TestBadge">
   </a>
 </p>
