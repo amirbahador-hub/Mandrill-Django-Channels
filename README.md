@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://www.workgenius.com/de/"><img src="readme.png" alt="WorkGenius" width="200"></a>
+  <a href="https://mandrillapp.com/"><img src="readme.svg" alt="MANDRILL" width="200"></a>
 </h1>
 
 <h4 align="center">A minimal WebSocket Application that can handel <a href="https://mandrillapp.com/" target="_blank">Mandrill</a> Events.</h4>
